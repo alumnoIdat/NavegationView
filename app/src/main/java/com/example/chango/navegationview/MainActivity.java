@@ -1,6 +1,7 @@
 package com.example.chango.navegationview;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         actionBar.setDisplayHomeAsUpEnabled(true);
         drawerLayout = (DrawerLayout)
-                findViewById(R.id.navigation_layout);
+                findViewById(R.id.navigation_drawer);
         NavigationView navigationView = (NavigationView)
                 findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -85,4 +86,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
